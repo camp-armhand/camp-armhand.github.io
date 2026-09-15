@@ -1,0 +1,94 @@
+WEBVTT
+
+00:00.050 --> 00:05.473
+CAMP: Cooperative Arm–Hand Motion Planning in Constrained Spaces
+
+00:05.617 --> 00:10.093
+Constrained manipulation requires arm–hand coordination.
+
+00:10.093 --> 00:18.790
+Separate planning can miss feasible motions, while full joint planning faces high-dimensional search and nonconvex collision constraints.
+
+00:18.790 --> 00:22.211
+We call this the Arm–Hand Planning Dilemma.
+
+00:22.350 --> 00:32.168
+We formulate planning using feasible hand fibers: sets of hand configurations that keep the complete system collision-free for a given arm configuration.
+
+00:32.168 --> 00:35.563
+As the arm moves, these fibers change.
+
+00:35.563 --> 00:39.050
+A fixed hand shape may therefore become infeasible.
+
+00:39.050 --> 00:44.063
+Our goal is to find a continuous arm–hand path from start to goal.
+
+00:44.533 --> 00:49.086
+We now present six simulation tasks with different spatial constraints.
+
+00:49.086 --> 00:53.097
+Colored dotted curves show wrist and fingertip trajectories.
+
+00:53.097 --> 00:56.915
+Gray marks the start pose, and green marks the target pose.
+
+00:57.467 --> 01:04.200
+We begin with Wall Traversal and Multi-Sphere Avoidance, showing coordinated motion around different obstacles.
+
+01:05.033 --> 01:11.962
+Next, Narrow Passage Traversal requires the complete system to pass between upper and lower obstacles.
+
+01:11.962 --> 01:16.913
+The arm posture and hand shape change together as the robot moves toward the target.
+
+01:18.367 --> 01:23.496
+Ball-in-Box Pregrasp coordinates the arm approach with finger motion through the opening.
+
+01:23.996 --> 01:30.842
+The fingers enter the box and reach the prescribed pregrasp pose, with no grasp performed in simulation.
+
+01:32.633 --> 01:38.437
+Display Button Press brings the index finger to the button while the arm avoids the display structure.
+
+01:38.437 --> 01:45.103
+Here, success means reaching the target fingertip position, without physically pressing the button.
+
+01:46.900 --> 01:50.515
+The final simulation task is Cabinet Bottle Pregrasp.
+
+01:50.765 --> 01:59.593
+The hand becomes compact to enter the cabinet opening, passes the barrier, and reopens around the bottle at the prescribed pregrasp configuration.
+
+02:01.300 --> 02:07.254
+These four examples show obstacle collisions, self-collision, and premature target collision.
+
+02:07.254 --> 02:10.161
+Each view freezes when a collision occurs.
+
+02:10.161 --> 02:15.082
+Red circles mark the affected region, while the labels identify the cause.
+
+02:16.250 --> 02:18.542
+Real-robot experiments follow.
+
+02:18.716 --> 02:22.626
+The first real-robot experiment is Ball-in-Box Grasp.
+
+02:22.626 --> 02:27.652
+The arm approaches the box and guides the hand through the square opening toward the ball.
+
+02:27.816 --> 02:34.042
+After reaching the target configuration, the hand closes around the ball and lifts it successfully.
+
+02:34.983 --> 02:40.946
+In Display Button Press, the arm moves around the barrier as the index finger approaches the button.
+
+02:41.116 --> 02:46.829
+No press is performed; success is fingertip arrival at the target button position.
+
+02:48.850 --> 02:55.813
+In Cabinet Bottle Grasp, the hand passes through the circular opening and reaches the target configuration.
+
+02:56.383 --> 02:59.122
+The hand then grasps and lifts the bottle.

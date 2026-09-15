@@ -1,0 +1,233 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="CAMP: Cooperative Arm–Hand Motion Planning in Constrained Spaces. An anonymous research project on coordinated arm and dexterous-hand motion planning.">
+  <meta name="robots" content="noindex, nofollow, noarchive">
+  <meta name="referrer" content="no-referrer">
+  <meta property="og:title" content="CAMP: Cooperative Arm–Hand Motion Planning in Constrained Spaces">
+  <meta property="og:description" content="Coordinating arm motion and hand shape through constrained spaces.">
+  <meta property="og:type" content="website">
+  <title>CAMP | Cooperative Arm–Hand Motion Planning</title>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="stylesheet" href="styles.css">
+  <script src="site.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <nav class="nav container" aria-label="Main navigation">
+      <a class="wordmark" href="#top" aria-label="CAMP home">CAMP<span class="wordmark-dot">.</span></a>
+      <div class="nav-links">
+        <a href="#overview">Overview</a>
+        <a href="#method">Method</a>
+        <a href="#experiments">Experiments</a>
+        <a href="#results">Results</a>
+      </div>
+      <span class="review-label">Anonymous submission</span>
+    </nav>
+  </header>
+  <main id="main">
+    <section class="hero container" id="top" aria-labelledby="paper-title">
+      <p class="eyebrow">ARM–HAND COOPERATIVE PLANNING</p>
+      <h1 id="paper-title"><span class="title-name">CAMP:</span> Cooperative Arm–Hand<br class="desktop-break"> Motion Planning in Constrained Spaces</h1>
+      <p class="authors">Anonymous Authors</p>
+      <div class="resource-links">
+        <a class="pill" href="#video">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="3"/><path d="m10 8 6 4-6 4z"/></svg> Video
+        </a>
+        <a class="pill" href="#code" title="Code release planned">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m8 7-5 5 5 5m8-10 5 5-5 5m-3-14-2 18"/></svg> Code
+        </a>
+        <a class="pill pill-outline" href="#experiments">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg> Demonstrations
+        </a>
+      </div>
+      <p class="hero-summary">Arm motion and hand shape adapt together<br class="desktop-break"> to navigate constrained spaces.</p>
+      <figure class="teaser">
+        <a class="figure-link" href="assets/motivation.png" target="_blank" rel="noopener" aria-label="Open the planning comparison at full resolution">
+        <img src="assets/motivation.png" alt="Comparison of decoupled arm–hand planning, which results in a thumb collision in the depicted opening, and CAMP, which coordinates arm and hand motion to pass through." fetchpriority="high" width="1800" height="919">
+        </a>
+        <figcaption>A collision-free arm path alone may not admit a continuous, collision-free hand motion.<br class="desktop-break"> CAMP keeps both the arm and the hand adjustable throughout planning.</figcaption>
+      </figure>
+    </section>
+
+    <section class="section soft-section" id="overview" aria-labelledby="abstract-title">
+      <div class="prose">
+        <p class="eyebrow">THE IDEA</p>
+        <h2 id="abstract-title">Abstract</h2>
+        <p>Coordinated arm–hand motion planning is fundamental to dexterous robotic manipulation in constrained environments. Planning the arm and hand separately can miss feasible motions that require both to adapt along the path, while direct planning in the complete configuration space faces high dimensionality and nonconvex collision constraints.</p>
+        <p>CAMP characterizes this coupling through configuration-dependent feasible hand fibers. It constructs candidate trajectories using layered hand search with local arm relaxation, then represents them with endpoint-preserving via-point movement primitives for coarse-to-fine joint optimization. Across six constrained simulation tasks, CAMP achieves 84.2–98.5% planning success. Ablation studies examine the contribution of each component, and real-robot experiments demonstrate the approach on a UR7e arm with a LinkerHand.</p>
+      </div>
+    </section>
+
+    <section class="section container" id="video" aria-labelledby="video-title">
+      <div class="section-heading">
+        <p class="eyebrow">SEE CAMP IN ACTION</p>
+        <h2 id="video-title">Video overview</h2>
+        <p>From the planning dilemma to simulation and real-robot experiments.</p>
+      </div>
+      <figure class="video-figure overview-video">
+        <video controls playsinline preload="none" poster="assets/overview.jpg" aria-label="CAMP overview video with English narration and captions">
+          <source src="assets/overview.mp4" type="video/mp4">
+          <track kind="captions" src="assets/overview.vtt" srclang="en" label="English">
+          Your browser does not support embedded video. <a href="assets/overview.mp4">Download the overview video.</a>
+        </video>
+        <figcaption>2 min 59 s · English narration and captions · <a href="assets/overview.mp4" download>Download video</a></figcaption>
+      </figure>
+    </section>
+
+    <section class="section soft-section" id="method" aria-labelledby="method-title">
+      <div class="container">
+        <div class="section-heading">
+          <p class="eyebrow">FROM GLOBAL GUIDANCE TO JOINT REFINEMENT</p>
+          <h2 id="method-title">Method overview</h2>
+          <p>Explore in the arm space. Adapt in the complete arm–hand space.</p>
+        </div>
+        <div class="insight">
+          <div>
+            <h3>The feasible hand fiber</h3>
+            <p>For a given arm configuration, the feasible hand fiber contains the hand configurations that keep the complete system free of environmental and self-collisions.</p>
+            <p>As the arm moves, this set can change in shape and connectivity. A cooperative trajectory must connect feasible hand configurations along the route—and may need to adjust the arm route to do so.</p>
+          </div>
+          <a class="figure-link" href="assets/fibers.png" target="_blank" rel="noopener" aria-label="Open feasible hand fiber diagram at full resolution">
+            <img src="assets/fibers.png" alt="Geometric illustration of feasible hand fibers and fixed-hand versus cooperative trajectories, reproduced from the paper." loading="lazy" width="1800" height="1405">
+          </a>
+        </div>
+        <figure class="method-figure">
+          <a class="figure-link" href="assets/method.png" target="_blank" rel="noopener" aria-label="Open CAMP pipeline at full resolution">
+            <img src="assets/method.png" alt="CAMP pipeline: generate arm-space guides, lift them using layered hand search with local arm relaxation, encode full trajectories with VMPs, then perform coarse-to-fine joint optimization." loading="lazy" width="1800" height="796">
+          </a>
+          <figcaption>CAMP combines global route diversity with continuous cooperative refinement. Select the figure to inspect it at full resolution.</figcaption>
+        </figure>
+        <div class="method-steps">
+          <article><span class="step-number">01</span><h3>Generate diverse guides</h3><p>Search the lower-dimensional arm space for multiple routes through the environment.</p></article>
+          <article><span class="step-number">02</span><h3>Construct complete paths</h3><p>Connect hand configurations along each guide. Relax the arm locally when transitions are blocked.</p></article>
+          <article><span class="step-number">03</span><h3>Optimize together</h3><p>Fit endpoint-preserving VMPs and refine arm and hand trajectories through coarse and fine stages.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section container" id="experiments" aria-labelledby="experiments-title">
+      <div class="section-heading">
+        <p class="eyebrow">SIX CONSTRAINED ENVIRONMENTS</p>
+        <h2 id="experiments-title">Simulation experiments</h2>
+        <p>One planning framework, different demands on arm–hand coordination.</p>
+      </div>
+      <div class="task-buttons" role="group" aria-label="Select a simulation task">
+        <button type="button" aria-pressed="true" aria-controls="task-panel" data-task="task01">Wall Traversal</button>
+        <button type="button" aria-pressed="false" aria-controls="task-panel" data-task="task03">Multi-Sphere Avoidance</button>
+        <button type="button" aria-pressed="false" aria-controls="task-panel" data-task="task04">Narrow Passage Traversal</button>
+        <button type="button" aria-pressed="false" aria-controls="task-panel" data-task="task07">Ball-in-Box Pregrasp</button>
+        <button type="button" aria-pressed="false" aria-controls="task-panel" data-task="task08">Display Button Press</button>
+        <button type="button" aria-pressed="false" aria-controls="task-panel" data-task="task09">Cabinet Cylinder Pregrasp</button>
+      </div>
+      <div id="task-panel" class="task-panel">
+        <video id="task-video" controls playsinline muted preload="none" poster="assets/sim-task01.jpg" aria-label="Wall Traversal simulation demonstration">
+          <source src="assets/sim-task01.mp4" type="video/mp4">
+          Your browser does not support embedded video. <a href="assets/sim-task01.mp4">Download the demonstration.</a>
+        </video>
+        <div class="task-details" aria-live="polite" aria-atomic="true">
+          <p class="eyebrow">SIMULATION</p>
+          <h3 id="task-title">Wall Traversal</h3>
+          <p id="task-description">Coordinate arm motion and finger articulation to traverse a wall-constrained environment.</p>
+          <dl class="task-stats">
+            <div><dt>Planning success</dt><dd id="task-success">98.5<span>%</span></dd></div>
+            <div><dt>Planning time</dt><dd id="task-time">3.40<span> s</span></dd></div>
+          </dl>
+          <p class="stat-note">Batch means; 10 × 100 trials.<br>Variability and protocol are reported below.</p>
+          <a class="text-link" id="task-download" href="assets/sim-task01.mp4" download>Download this demonstration <span aria-hidden="true">↗</span></a>
+        </div>
+      </div>
+      <p class="section-note">Simulation evaluates collision-free motion to prescribed goal configurations. The pregrasp tasks do not include grasping or lifting; Display Button Press evaluates target reaching without physical button actuation.</p>
+      <noscript><p class="section-note">All demonstrations: <a href="assets/sim-task03.mp4">Multi-Sphere Avoidance</a> · <a href="assets/sim-task04.mp4">Narrow Passage Traversal</a> · <a href="assets/sim-task07.mp4">Ball-in-Box Pregrasp</a> · <a href="assets/sim-task08.mp4">Display Button Press</a> · <a href="assets/sim-task09.mp4">Cabinet Cylinder Pregrasp</a>.</p></noscript>
+    </section>
+
+    <section class="section soft-section" id="results" aria-labelledby="results-title">
+      <div class="container">
+        <div class="section-heading">
+          <p class="eyebrow">QUANTITATIVE EVALUATION</p>
+          <h2 id="results-title">Planning results</h2>
+          <p>Success and solver time across the six simulation tasks.</p>
+        </div>
+        <div class="table-wrap" role="region" aria-label="CAMP planning results" tabindex="0">
+          <table>
+            <caption>CAMP · Mean ± standard deviation across 10 batches of 100 trials per task.</caption>
+            <thead><tr><th scope="col">Task</th><th scope="col">Success rate (%) ↑</th><th scope="col">Planning time (s) ↓</th></tr></thead>
+            <tbody>
+              <tr><th scope="row">Wall Traversal</th><td>98.50 ± 1.33</td><td>3.40 ± 1.13</td></tr>
+              <tr><th scope="row">Multi-Sphere Avoidance</th><td>91.30 ± 1.51</td><td>4.70 ± 1.47</td></tr>
+              <tr><th scope="row">Narrow Passage Traversal</th><td>92.50 ± 2.11</td><td>30.10 ± 1.20</td></tr>
+              <tr><th scope="row">Ball-in-Box Pregrasp</th><td>92.00 ± 2.09</td><td>32.40 ± 1.20</td></tr>
+              <tr><th scope="row">Display Button Press</th><td>94.40 ± 2.49</td><td>35.60 ± 1.47</td></tr>
+              <tr><th scope="row">Cabinet Cylinder Pregrasp</th><td>84.20 ± 1.30</td><td>42.60 ± 2.08</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <details class="protocol">
+          <summary>Evaluation protocol and metric definitions</summary>
+          <div>
+            <p>All methods use the same sampled scenes and start and goal configurations. The experimental platform has a 6-DoF UR7e arm and a 16-DoF LinkerHand, for 22 active joints. Planning runs on an Intel Core i9-14900KF CPU and an NVIDIA GeForce RTX 5070 Ti GPU.</p>
+            <p>Success requires a complete trajectory that reaches the prescribed goal, satisfies the task constraints and passes exact collision checks in MuJoCo. Planning time is the solver wall-clock time averaged over all 100 trials in each batch; it excludes setup, path simplification, dense post-planning validation, collision-checker construction, artifact I/O and playback.</p>
+            <p>The paper provides the complete RRT-Connect, QRRT*, CHOMP and A*+CHOMP comparisons, as well as ablations of arm relaxation, trajectory representation and coarse-to-fine optimization.</p>
+          </div>
+        </details>
+        <div class="ablation-header">
+          <h3>What contributes to CAMP?</h3>
+          <p>Ball-in-Box Pregrasp · 100 planning trials per setting.</p>
+        </div>
+        <div class="table-wrap" role="region" aria-label="CAMP ablation study" tabindex="0">
+          <table class="ablation-table">
+            <thead><tr><th scope="col">Configuration</th><th scope="col">Success (%) ↑</th><th scope="col">Time (s) ↓</th><th scope="col">Normalized length ↓</th></tr></thead>
+            <tbody>
+              <tr><th scope="row">Without arm relaxation</th><td>74</td><td>32.68</td><td>1.614</td></tr>
+              <tr><th scope="row">Waypoint-wise joint representation</th><td>79</td><td>84.97</td><td>2.260</td></tr>
+              <tr><th scope="row">Fine-only optimization</th><td>81</td><td>25.15</td><td>1.679</td></tr>
+              <tr class="highlight-row"><th scope="row">CAMP (full method)</th><td>92</td><td>32.45</td><td>1.598</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="section-note">Normalized length is cumulative joint-space motion divided by the direct start-to-goal displacement, averaged over successful trajectories. Arm relaxation affects initialization; both subsystems remain adjustable during trajectory optimization.</p>
+      </div>
+    </section>
+
+    <section class="section container" id="real-robot" aria-labelledby="real-title">
+      <div class="section-heading">
+        <p class="eyebrow">UR7e + LINKERHAND</p>
+        <h2 id="real-title">Real-robot experiments</h2>
+        <p>Coordinated motion on a physical arm–hand system.</p>
+      </div>
+      <div class="real-grid">
+        <figure class="video-figure">
+          <video controls playsinline muted preload="none" poster="assets/real-task07.jpg" aria-label="Ball-in-Box Pregrasp real-robot demonstration"><source src="assets/real-task07.mp4" type="video/mp4"> <a href="assets/real-task07.mp4">Download video.</a></video>
+          <figcaption><h3>Ball-in-Box Pregrasp</h3><p>The hand reaches through a constrained opening toward the ball.</p></figcaption>
+        </figure>
+        <figure class="video-figure">
+          <video controls playsinline muted preload="none" poster="assets/real-task08.jpg" aria-label="Display Button Press real-robot demonstration"><source src="assets/real-task08.mp4" type="video/mp4"> <a href="assets/real-task08.mp4">Download video.</a></video>
+          <figcaption><h3>Display Button Press</h3><p>Success requires the fingertip to reach the target position. No physical button press is performed.</p></figcaption>
+        </figure>
+        <figure class="video-figure">
+          <video controls playsinline muted preload="none" poster="assets/real-task09.jpg" aria-label="Cabinet Cylinder Pregrasp real-robot demonstration"><source src="assets/real-task09.mp4" type="video/mp4"> <a href="assets/real-task09.mp4">Download video.</a></video>
+          <figcaption><h3>Cabinet Cylinder Pregrasp</h3><p>The hand passes the cabinet opening and approaches the cylinder.</p></figcaption>
+        </figure>
+      </div>
+      <p class="section-note">The planner specifies the motion to the target configuration. Subsequent task actions shown in the real footage belong to the complete experimental system. The paper reports complete-system success over 10 trials per task.</p>
+    </section>
+
+    <section class="section closing soft-section" aria-labelledby="scope-title">
+      <div class="prose">
+        <div class="code-release" id="code" role="region" aria-labelledby="code-title">
+          <h2 id="code-title">Code</h2>
+          <p>We plan to open-source the implementation in the future.</p>
+        </div>
+        <h2 id="scope-title">Scope and limitations</h2>
+        <p>CAMP targets motion planning in known, static environments. Its mathematical formulation is parameterized by the numbers of arm and hand joints; the experiments use one platform, UR7e + LinkerHand. These results do not establish cross-platform transfer or guarantees for arbitrary environments.</p>
+        <div class="resource-links"><a class="pill" href="#video">Watch the video</a><a class="pill pill-outline" href="#experiments">Explore demonstrations</a></div>
+      </div>
+    </section>
+  </main>
+  <footer class="container footer"><span class="wordmark">CAMP<span class="wordmark-dot">.</span></span><p>Anonymous research project · Arm–hand cooperative motion planning</p><a href="#top">Back to top ↑</a></footer>
+  <p id="media-status" class="media-status" role="status" hidden></p>
+</body>
+</html>
