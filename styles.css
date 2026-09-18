@@ -82,11 +82,7 @@ figcaption { font-size: 15px; color: var(--muted); line-height: 1.6; text-align:
 .motion-toggle:hover { color: var(--blue); border-color: var(--blue); }
 .motion-toggle[hidden] { display: none; }
 .method-figure { padding: var(--space-6); background: white; border-radius: var(--radius); border: 1px solid #e6eaee; }
-.method-figure figcaption { max-width: 850px; margin-inline: auto; }
-.method-steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-8); margin-top: var(--space-12); }
-.step-number { display: block; color: var(--blue); font-size: 13px; font-weight: 650; letter-spacing: .08em; padding-bottom: 12px; border-bottom: 1px solid var(--line); margin-bottom: 16px; }
-.method-steps h3 { font-size: 20px; margin-bottom: var(--space-3); }
-.method-steps p { font-size: 16px; color: var(--muted); }
+.method-summary { max-width: 850px; margin: var(--space-8) auto 0; line-height: 1.8; }
 .task-buttons { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-bottom: var(--space-8); }
 .task-buttons button { padding: 13px 12px; border: 1px solid var(--line); border-radius: 8px; background: white; color: #4b5765; font-size: 15px; line-height: 1.5; font-weight: 500; }
 .task-buttons button:hover { border-color: var(--blue); color: var(--blue); }
@@ -159,10 +155,6 @@ tbody td:nth-child(2) { color: var(--blue-dark); font-weight: 600; }
   .section-heading { margin-bottom: var(--space-8); }
   .section-heading > p:last-child:not(.eyebrow) { font-size: 16px; }
   .method-figure { padding: 12px; }
-  .method-steps { grid-template-columns: 1fr; gap: var(--space-6); margin-top: var(--space-8); }
-  .method-steps article { display: grid; grid-template-columns: 32px 1fr; column-gap: 16px; }
-  .method-steps .step-number { grid-row: span 2; padding-top: 3px; border: none; }
-  .method-steps h3 { margin-bottom: 8px; }
   .task-buttons { grid-template-columns: repeat(2, 1fr); gap: 8px; }
   .task-buttons button { font-size: 13px; padding: 10px; min-height: 52px; }
   table { min-width: 590px; font-size: 14px; }

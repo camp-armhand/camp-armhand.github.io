@@ -11,7 +11,7 @@
   <meta property="og:type" content="website">
   <title>CAMP | Cooperative Arm–Hand Motion Planning</title>
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
-  <link rel="stylesheet" href="styles.css?v=fiber-v40">
+  <link rel="stylesheet" href="styles.css?v=method-summary">
   <script src="site.js?v=fiber-v40" defer></script>
 </head>
 <body>
@@ -105,13 +105,8 @@
           <a class="figure-link" href="assets/method.png" target="_blank" rel="noopener" aria-label="Open CAMP pipeline at full resolution">
             <img src="assets/method.png" alt="CAMP pipeline: generate arm-space guides, lift them using layered hand search with local arm relaxation, encode full trajectories with VMPs, then perform coarse-to-fine joint optimization." loading="lazy" width="1800" height="796">
           </a>
-          <figcaption>CAMP combines global route diversity with continuous cooperative refinement. Select the figure to inspect it at full resolution.</figcaption>
         </figure>
-        <div class="method-steps">
-          <article><span class="step-number">01</span><h3>Generate diverse guides</h3><p>Search the lower-dimensional arm space for multiple routes through the environment.</p></article>
-          <article><span class="step-number">02</span><h3>Construct complete paths</h3><p>Connect hand configurations along each guide. Relax the arm locally when transitions are blocked.</p></article>
-          <article><span class="step-number">03</span><h3>Optimize together</h3><p>Fit endpoint-preserving VMPs and refine arm and hand trajectories through coarse and fine stages.</p></article>
-        </div>
+        <p class="method-summary">CAMP generates multiple reference paths in the arm configuration space and constructs complete arm–hand candidates through layered hand search with local arm relaxation. The candidates are encoded with endpoint-preserving via-point movement primitives (VMPs), then refined through coarse-to-fine joint optimization under collision and joint constraints. Both arm motion and hand shape remain adjustable throughout optimization, allowing the system to adapt cooperatively to constrained environments.</p>
       </div>
     </section>
 
