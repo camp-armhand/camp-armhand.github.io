@@ -120,14 +120,10 @@ tbody td:nth-child(2) { color: var(--blue-dark); font-weight: 600; }
 .real-grid figcaption { text-align: left; }
 .real-grid h3 { font-size: 19px; color: var(--ink); margin-bottom: var(--space-3); }
 .real-grid p { font-size: 15px; }
-.closing { padding-block: var(--space-16); }
-.code-release { text-align: center; padding-bottom: var(--space-12); margin-bottom: var(--space-12); border-bottom: 1px solid var(--line); scroll-margin-top: 24px; }
-.code-release h2 { margin-bottom: var(--space-4); }
-.code-release p { color: var(--muted); }
-.closing .resource-links { margin-top: var(--space-8); }
-.footer { display: flex; align-items: center; justify-content: space-between; gap: var(--space-6); padding-block: var(--space-8); }
-.footer p, .footer a { font-size: 12px; color: var(--muted); }
-.footer .wordmark { font-size: 21px; }
+.code-page { min-height: 100vh; display: flex; flex-direction: column; }
+.release-notice { flex: 1; display: grid; place-items: center; text-align: center; padding-block: var(--space-20); }
+.release-notice .release-message { max-width: 640px; margin: var(--space-6) auto 0; color: var(--muted); font-size: 20px; }
+.release-notice .resource-links { margin-top: var(--space-8); }
 .media-status { position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%); z-index: 20; width: min(500px, 90%); background: var(--ink); color: white; padding: 14px 20px; border-radius: 8px; font-size: 14px; }
 @media (max-width: 850px) {
   .review-label { display: none; }
@@ -138,7 +134,6 @@ tbody td:nth-child(2) { color: var(--blue-dark); font-weight: 600; }
   .task-stats { gap: var(--space-12); }
   .real-grid { grid-template-columns: 1fr; max-width: 680px; margin-inline: auto; gap: var(--space-8); }
   .real-grid figcaption { padding-bottom: var(--space-4); }
-  .footer { flex-wrap: wrap; }
 }
 @media (max-width: 600px) {
   html { scroll-padding-top: 75px; }
@@ -170,8 +165,6 @@ tbody td:nth-child(2) { color: var(--blue-dark); font-weight: 600; }
   th, td { padding: 14px 18px; }
   .ablation-table { min-width: 680px; }
   caption { max-width: 590px; font-size: 12px; }
-  .footer { gap: 12px; }
-  .footer p { order: 3; flex-basis: 100%; }
 }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
