@@ -81,15 +81,11 @@
     <section class="section soft-section" id="method" aria-labelledby="method-title">
       <div class="container">
         <div class="section-heading">
-          <p class="eyebrow">FROM GLOBAL GUIDANCE TO JOINT REFINEMENT</p>
-          <h2 id="method-title">Method overview</h2>
-          <p>Explore in the arm space. Adapt in the complete arm–hand space.</p>
+          <h2 id="method-title">Illustration of the feasible fiber formulation</h2>
         </div>
         <div class="insight">
           <div>
-            <h3>The feasible hand fiber</h3>
-            <p>For a given arm configuration, the feasible hand fiber contains the hand configurations that keep the complete system free of environmental and self-collisions.</p>
-            <p>As the arm moves, this set can change in shape and connectivity. A cooperative trajectory must connect feasible hand configurations along the route—and may need to adjust the arm route to do so.</p>
+            <p>The surface illustrates the collision landscape in the arm–hand configuration space. The fixed-hand trajectory leaves the feasible space along part of its path, whereas the cooperative trajectory adapts the hand configuration to remain feasible. The bottom projection shows how fixing the hand restricts the feasible arm configurations, while cooperation permits a larger set.</p>
           </div>
           <figure class="fiber-animation">
             <a class="figure-link" href="assets/fibers-v40.gif" target="_blank" rel="noopener" aria-label="Open the animated feasible hand fiber diagram">
@@ -101,12 +97,15 @@
             <button class="motion-toggle" id="fiber-animation-toggle" type="button" aria-controls="fiber-graphic" hidden>Show still image</button>
           </figure>
         </div>
+        <div class="section-heading">
+          <h2 id="camp-overview-title">Overview of CAMP</h2>
+        </div>
         <figure class="method-figure">
           <a class="figure-link" href="assets/method.png" target="_blank" rel="noopener" aria-label="Open CAMP pipeline at full resolution">
             <img src="assets/method.png" alt="CAMP pipeline: generate arm-space guides, lift them using layered hand search with local arm relaxation, encode full trajectories with VMPs, then perform coarse-to-fine joint optimization." loading="lazy" width="1800" height="796">
           </a>
         </figure>
-        <p class="method-summary">CAMP generates multiple reference paths in the arm configuration space and constructs complete arm–hand candidates through layered hand search with local arm relaxation. The candidates are encoded with endpoint-preserving via-point movement primitives (VMPs), then refined through coarse-to-fine joint optimization under collision and joint constraints. Both arm motion and hand shape remain adjustable throughout optimization, allowing the system to adapt cooperatively to constrained environments.</p>
+        <p class="method-summary">CAMP lifts arm-space guides to complete arm–hand paths through layered Hand-RRT and local joint replanning. These paths are encoded as via-point movement primitive (VMP) weights and refined by parallel coarse-to-fine optimization, with both arm and hand trajectories remaining adjustable. The top-ranked candidates undergo fine refinement before the final trajectory is decoded.</p>
       </div>
     </section>
 
