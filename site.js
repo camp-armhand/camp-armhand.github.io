@@ -13,6 +13,25 @@ const taskVideo = document.querySelector("#task-video");
 const taskButtons = [...document.querySelectorAll("[data-task]")];
 const mediaStatus = document.querySelector("#media-status");
 
+const fiberGraphic = document.querySelector("#fiber-graphic");
+const fiberReducedSource = document.querySelector("#fiber-reduced-motion");
+const fiberToggle = document.querySelector("#fiber-animation-toggle");
+if (fiberGraphic && fiberReducedSource && fiberToggle) {
+  const motionPreference = window.matchMedia("(prefers-reduced-motion: reduce)");
+  let fiberPlaying = !motionPreference.matches;
+  const setFiberAnimation = (playing) => {
+    fiberPlaying = playing;
+    const source = playing ? "assets/fibers-v40.gif" : "assets/fibers-v40-still.png";
+    fiberGraphic.src = source;
+    fiberReducedSource.srcset = source;
+    fiberToggle.textContent = playing ? "Show still image" : "Play animation";
+  };
+  setFiberAnimation(fiberPlaying);
+  fiberToggle.hidden = false;
+  fiberToggle.addEventListener("click", () => setFiberAnimation(!fiberPlaying));
+  motionPreference.addEventListener("change", (event) => setFiberAnimation(!event.matches));
+}
+
 if (document.querySelector("base")) {
   document.addEventListener("click", (event) => {
     if (event.defaultPrevented || event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;

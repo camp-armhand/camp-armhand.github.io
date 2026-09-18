@@ -77,6 +77,10 @@ figcaption { font-size: 15px; color: var(--muted); line-height: 1.6; text-align:
 .insight p { font-size: 17px; line-height: 1.75; color: #46515e; }
 .figure-link { display: block; border-radius: 6px; overflow: hidden; }
 .figure-link img { width: 100%; }
+.fiber-animation { min-width: 0; text-align: right; }
+.motion-toggle { margin-top: var(--space-2); padding: 6px 12px; min-height: 44px; border: 1px solid var(--line); border-radius: 999px; background: var(--white); color: var(--muted); font-size: 13px; }
+.motion-toggle:hover { color: var(--blue); border-color: var(--blue); }
+.motion-toggle[hidden] { display: none; }
 .method-figure { padding: var(--space-6); background: white; border-radius: var(--radius); border: 1px solid #e6eaee; }
 .method-figure figcaption { max-width: 850px; margin-inline: auto; }
 .method-steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-8); margin-top: var(--space-12); }

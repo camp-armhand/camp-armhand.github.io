@@ -11,8 +11,8 @@
   <meta property="og:type" content="website">
   <title>CAMP | Cooperative Arm–Hand Motion Planning</title>
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
-  <link rel="stylesheet" href="styles.css">
-  <script src="site.js" defer></script>
+  <link rel="stylesheet" href="styles.css?v=fiber-v40">
+  <script src="site.js?v=fiber-v40" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -91,9 +91,15 @@
             <p>For a given arm configuration, the feasible hand fiber contains the hand configurations that keep the complete system free of environmental and self-collisions.</p>
             <p>As the arm moves, this set can change in shape and connectivity. A cooperative trajectory must connect feasible hand configurations along the route—and may need to adjust the arm route to do so.</p>
           </div>
-          <a class="figure-link" href="assets/fibers.png" target="_blank" rel="noopener" aria-label="Open feasible hand fiber diagram at full resolution">
-            <img src="assets/fibers.png" alt="Geometric illustration of feasible hand fibers and fixed-hand versus cooperative trajectories, reproduced from the paper." loading="lazy" width="1800" height="1405">
-          </a>
+          <figure class="fiber-animation">
+            <a class="figure-link" href="assets/fibers-v40.gif" target="_blank" rel="noopener" aria-label="Open the animated feasible hand fiber diagram">
+              <picture>
+                <source id="fiber-reduced-motion" media="(prefers-reduced-motion: reduce)" srcset="assets/fibers-v40-still.png">
+                <img id="fiber-graphic" src="assets/fibers-v40.gif" alt="Animated feasible hand fibers: the purple fiber moves with the arm configuration, followed by the red fixed-hand path and green cooperative trajectory." loading="lazy" width="696" height="516">
+              </picture>
+            </a>
+            <button class="motion-toggle" id="fiber-animation-toggle" type="button" aria-controls="fiber-graphic" hidden>Show still image</button>
+          </figure>
         </div>
         <figure class="method-figure">
           <a class="figure-link" href="assets/method.png" target="_blank" rel="noopener" aria-label="Open CAMP pipeline at full resolution">
