@@ -11,7 +11,7 @@
   <meta property="og:type" content="website">
   <title>CAMP | Cooperative Arm–Hand Motion Planning</title>
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
-  <link rel="stylesheet" href="styles.css?v=method-summary">
+  <link rel="stylesheet" href="styles.css?v=motivation-caption">
   <script src="site.js?v=fiber-v40" defer></script>
 </head>
 <body>
@@ -44,12 +44,12 @@
           <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg> Demonstrations
         </a>
       </div>
-      <p class="hero-summary">Arm motion and hand shape adapt together<br class="desktop-break"> to navigate constrained spaces.</p>
+      <p class="eyebrow motivation-label">MOTIVATION OF CAMP</p>
       <figure class="teaser">
         <a class="figure-link" href="assets/motivation.png" target="_blank" rel="noopener" aria-label="Open the planning comparison at full resolution">
         <img src="assets/motivation.png" alt="Comparison of decoupled arm–hand planning, which results in a thumb collision in the depicted opening, and CAMP, which coordinates arm and hand motion to pass through." fetchpriority="high" width="1800" height="919">
         </a>
-        <figcaption>A collision-free arm path alone may not admit a continuous, collision-free hand motion.<br class="desktop-break"> CAMP keeps both the arm and the hand adjustable throughout planning.</figcaption>
+        <figcaption>Motivation for cooperative arm–hand motion planning in a constrained opening. Decoupled planning leads to a thumb collision, whereas CAMP coordinates arm and hand motion to avoid it.</figcaption>
       </figure>
     </section>
 
@@ -57,8 +57,10 @@
       <div class="prose">
         <p class="eyebrow">THE IDEA</p>
         <h2 id="abstract-title">Abstract</h2>
-        <p>Coordinated arm–hand motion planning is fundamental to dexterous robotic manipulation in constrained environments. Planning the arm and hand separately can miss feasible motions that require both to adapt along the path, while direct planning in the complete configuration space faces high dimensionality and nonconvex collision constraints.</p>
-        <p>CAMP characterizes this coupling through configuration-dependent feasible hand fibers. It constructs candidate trajectories using layered hand search with local arm relaxation, then represents them with endpoint-preserving via-point movement primitives for coarse-to-fine joint optimization. Across six constrained simulation tasks, CAMP achieves 84.2–98.5% planning success. Ablation studies examine the contribution of each component, and real-robot experiments demonstrate the approach on a UR7e arm with a LinkerHand.</p>
+        <p>Coordinated arm–hand motion planning is fundamental to dexterous robotic manipulation in complex and constrained environments. A straightforward solution is to decompose the problem into separate arm path planning and hand motion generation; however, this poses a dilemma: decomposition can miss feasible solutions that require coordinated arm–hand adaptation along the path. Alternatively, directly planning in the high-dimensional joint arm–hand configuration space captures such coupling but faces a substantially enlarged search space and nonconvex collision constraints.</p>
+        <p>To characterize this coupling, we formulate feasible hand fibers that capture collision-free hand configurations for each arm configuration. Based on this formulation, we propose CAMP, a high-success and efficient cooperative arm–hand motion planner for constrained environments. CAMP constructs candidate trajectories through layered hand search with local arm relaxation, then compactly represents them using endpoint-preserving via-point movement primitives (VMPs) for coarse-to-fine joint optimization.</p>
+        <p>Across six constrained simulation tasks, CAMP achieves 84.2–98.5% planning success, outperforming alternative planners with competitive efficiency. Ablation studies verify the contributions of arm relaxation, VMP representation, and coarse-to-fine optimization, while real-robot experiments demonstrate CAMP on constrained manipulation tasks.</p>
+        <p>The project website is available at <a href="https://camp-armhand.github.io/">https://camp-armhand.github.io/</a>.</p>
       </div>
     </section>
 
@@ -74,7 +76,7 @@
           <track kind="captions" src="assets/overview.vtt" srclang="en" label="English">
           Your browser does not support embedded video. <a href="assets/overview.mp4">Download the overview video.</a>
         </video>
-        <figcaption>2 min 59 s · English narration and captions · <a href="assets/overview.mp4" download>Download video</a></figcaption>
+        <figcaption>2 min 59 s · English narration and captions</figcaption>
       </figure>
     </section>
 

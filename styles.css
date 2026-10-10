@@ -59,7 +59,7 @@ h1 { font-size: clamp(32px, 3.6vw, 46px); font-weight: 720; line-height: 1.22; l
 .pill-outline { background: white; color: var(--ink); border-color: #cbd3da; }
 .pill-outline:hover { background: var(--blue-light); color: var(--blue-dark); border-color: var(--blue); }
 .pill svg { width: 17px; height: 17px; stroke: currentColor; fill: none; stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; }
-.hero-summary { font-size: clamp(20px, 2.2vw, 26px); line-height: 1.4; margin: var(--space-12) auto var(--space-8); font-weight: 450; letter-spacing: -.018em; }
+.motivation-label { margin-top: var(--space-12); }
 .teaser { width: 100%; margin-inline: auto; }
 .teaser img { width: 100%; }
 figcaption { font-size: 15px; color: var(--muted); line-height: 1.6; text-align: center; padding-top: var(--space-4); }
@@ -146,7 +146,7 @@ tbody td:nth-child(2) { color: var(--blue-dark); font-weight: 600; }
   h1 { font-size: 32px; line-height: 1.2; }
   .desktop-break { display: none; }
   .eyebrow { font-size: 10px; }
-  .hero-summary { margin-top: var(--space-8); font-size: 21px; }
+  .motivation-label { margin-top: var(--space-8); }
   .resource-links { gap: 8px; }
   .pill { padding-inline: 15px; font-size: 13px; }
   .authors { font-size: 17px; }
