@@ -3,92 +3,95 @@ WEBVTT
 00:00.050 --> 00:05.473
 CAMP: Cooperative Arm–Hand Motion Planning in Constrained Spaces
 
-00:05.617 --> 00:10.093
+00:05.658 --> 00:09.623
 Constrained manipulation requires arm–hand coordination.
 
-00:10.093 --> 00:18.790
-Separate planning can miss feasible motions, while full joint planning faces high-dimensional search and nonconvex collision constraints.
+00:09.623 --> 00:19.330
+Separate planning reduces search dimensionality but may miss feasible motions, while full joint planning faces high-dimensional search and nonconvex collision constraints.
 
-00:18.790 --> 00:22.211
+00:19.330 --> 00:22.037
 We call this the Arm–Hand Planning Dilemma.
 
-00:22.350 --> 00:32.168
+00:22.179 --> 00:31.154
 We formulate planning using feasible hand fibers: sets of hand configurations that keep the complete system collision-free for a given arm configuration.
 
-00:32.168 --> 00:35.563
+00:31.154 --> 00:34.258
 As the arm moves, these fibers change.
 
-00:35.563 --> 00:39.050
+00:34.258 --> 00:37.445
 A fixed hand shape may therefore become infeasible.
 
-00:39.050 --> 00:44.063
+00:37.445 --> 00:42.028
 Our goal is to find a continuous arm–hand path from start to goal.
 
-00:44.533 --> 00:49.086
-We now present six simulation tasks with different spatial constraints.
+00:42.473 --> 00:44.765
+To find this path, we propose CAMP.
 
-00:49.086 --> 00:53.097
-Colored dotted curves show wrist and fingertip trajectories.
+00:44.765 --> 00:49.030
+CAMP first generates multiple paths in the lower-dimensional arm space.
 
-00:53.097 --> 00:56.915
-Gray marks the start pose, and green marks the target pose.
+00:49.030 --> 00:58.915
+Along each guide, a layered hand search constructs a complete arm–hand candidate, while local arm relaxation adjusts both the arm and hand when the midpoint is in collision.
 
-00:57.467 --> 01:04.200
-We begin with Wall Traversal and Multi-Sphere Avoidance, showing coordinated motion around different obstacles.
+00:58.915 --> 01:03.730
+VMP encoding provides a compact, endpoint-preserving path representation.
 
-01:05.033 --> 01:11.962
-Next, Narrow Passage Traversal requires the complete system to pass between upper and lower obstacles.
+01:03.730 --> 01:07.158
+Coarse joint optimization refines candidates in parallel.
 
-01:11.962 --> 01:16.913
-The arm posture and hand shape change together as the robot moves toward the target.
+01:07.158 --> 01:11.201
+After fine refinement and decoding, we select the final trajectory.
 
-01:18.367 --> 01:23.496
-Ball-in-Box Pregrasp coordinates the arm approach with finger motion through the opening.
+01:11.412 --> 01:20.471
+Next, we present videos of six simulation tasks, across which CAMP achieves planning success rates of 84.2–98.5%.
 
-01:23.996 --> 01:30.842
-The fingers enter the box and reach the prescribed pregrasp pose, with no grasp performed in simulation.
+01:20.667 --> 01:26.471
+We begin with Wall Traversal and Multi-Sphere Avoidance, which show coordinated motion around obstacles.
 
-01:32.633 --> 01:38.437
-Display Button Press brings the index finger to the button while the arm avoids the display structure.
+01:26.667 --> 01:36.473
+Next, in Narrow Passage Traversal, the arm posture and hand shape change together as the system passes between the upper and lower obstacles and approaches the target configuration.
 
-01:38.437 --> 01:45.103
-Here, success means reaching the target fingertip position, without physically pressing the button.
+01:36.674 --> 01:39.126
+We then turn to Ball-in-Box Pregrasp.
 
-01:46.900 --> 01:50.515
+01:39.126 --> 01:44.312
+The hand reaches a pregrasp pose through the opening, with no grasp performed in simulation.
+
+01:44.699 --> 01:52.269
+For Display Button Press, the hand reaches the target pose while the arm avoids the display and the adjacent barrier, without pressing the button.
+
+01:52.680 --> 01:56.085
 The final simulation task is Cabinet Bottle Pregrasp.
 
-01:50.765 --> 01:59.593
-The hand becomes compact to enter the cabinet opening, passes the barrier, and reopens around the bottle at the prescribed pregrasp configuration.
+01:56.085 --> 02:02.288
+The hand becomes compact to pass through the cabinet opening, then reopens around the bottle to reach the target pose.
 
-02:01.300 --> 02:07.254
-These four examples show obstacle collisions, self-collision, and premature target collision.
+02:02.667 --> 02:05.991
+We also examine four representative failure cases.
 
-02:07.254 --> 02:10.161
-Each view freezes when a collision occurs.
+02:05.991 --> 02:11.310
+These examples show obstacle collisions, self-collision, and premature target collision.
 
-02:10.161 --> 02:15.082
-Red circles mark the affected region, while the labels identify the cause.
+02:11.310 --> 02:14.335
+Red circles and labels identify each failure.
 
-02:16.250 --> 02:18.542
-Real-robot experiments follow.
+02:14.541 --> 02:18.313
+Then, we present videos of the real-robot experiments.
 
-02:18.716 --> 02:22.626
-The first real-robot experiment is Ball-in-Box Grasp.
+02:19.000 --> 02:22.651
+We begin the real-robot experiments with Ball-in-Box Grasp.
 
-02:22.626 --> 02:27.652
-The arm approaches the box and guides the hand through the square opening toward the ball.
+02:22.651 --> 02:26.825
+The hand reconfigures as the arm guides it through the square opening toward the ball.
 
-02:27.816 --> 02:34.042
-After reaching the target configuration, the hand closes around the ball and lifts it successfully.
+02:28.100 --> 02:34.289
+After reaching the target, the grasp and lift follow a manually adjusted trajectory for demonstration.
 
-02:34.983 --> 02:40.946
-In Display Button Press, the arm moves around the barrier as the index finger approaches the button.
+02:36.272 --> 02:45.024
+Next, in Display Button Press, the hand reconfigures in advance to avoid the display and the adjacent barrier, reaching the target pose without pressing the button.
 
-02:41.116 --> 02:46.829
-No press is performed; success is fingertip arrival at the target button position.
+02:49.206 --> 02:54.391
+Finally, in Cabinet Bottle Grasp, the hand becomes compact to pass through the barrier opening.
 
-02:48.850 --> 02:55.813
-In Cabinet Bottle Grasp, the hand passes through the circular opening and reaches the target configuration.
-
-02:56.383 --> 02:59.122
-The hand then grasps and lifts the bottle.
+02:56.300 --> 02:59.761
+We manually add hand closure and lifting for demonstration.
