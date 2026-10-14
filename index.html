@@ -166,14 +166,6 @@
             </tbody>
           </table>
         </div>
-        <details class="protocol">
-          <summary>Evaluation protocol and metric definitions</summary>
-          <div>
-            <p>All methods use the same sampled scenes and start and goal configurations. The experimental platform has a 6-DoF UR7e arm and a 16-DoF LinkerHand, for 22 active joints. Planning runs on an Intel Core i9-14900KF CPU and an NVIDIA GeForce RTX 5070 Ti GPU.</p>
-            <p>Success requires a complete trajectory that reaches the prescribed goal, satisfies the task constraints and passes exact collision checks in MuJoCo. Planning time is the solver wall-clock time averaged over all 100 trials in each batch; it excludes setup, path simplification, dense post-planning validation, collision-checker construction, artifact I/O and playback.</p>
-            <p>The paper provides the complete RRT-Connect, QRRT*, CHOMP and A*+CHOMP comparisons, as well as ablations of arm relaxation, trajectory representation and coarse-to-fine optimization.</p>
-          </div>
-        </details>
         <div class="ablation-header">
           <h3>What contributes to CAMP?</h3>
           <p>Ball-in-Box Pregrasp · 100 planning trials per setting.</p>
